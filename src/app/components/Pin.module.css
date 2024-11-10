@@ -9,9 +9,16 @@
 
   text-align: center;
 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px 8px black;
+  border: 1px solid black;
   border-radius: 10px;
   background-color: white;
+}
+
+.pinItem:hover{
+    box-shadow: 0 2px 8px 0 black;
+    border: 1px solid red;
+    margin: 12px;
 }
 
 .pinContent {
@@ -25,6 +32,7 @@
 }
 .pinInfo{
     align-items: center;
+    font-family: Inter, sans-serif;;
 }
 
 .pinInfo h2 {

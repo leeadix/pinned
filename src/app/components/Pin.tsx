@@ -24,8 +24,10 @@ export default function Pin({ pin }: PinProps) {
         />
         <div  className={styles.pinInfo}>
           <h2>{pin.place}</h2>
-          <p>{pin.type}</p>
-          <p>{pin.area}</p>
+          <div className='flex justify-around'>
+            <div className=''><p>{pin.type}</p></div>
+            <div className=''><p>{pin.area}</p></div>
+          </div>  
         </div>
       </Card>
     );
