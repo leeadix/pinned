@@ -1,8 +1,8 @@
 "use client";
 import { useState } from 'react';
 import React from "react";
-import Pins from "./components/Pins";
-import Nav from "./components/Nav";
+import Pins from "./../components/Pins";
+import UserNav from "./../components/UserNav";
 
 type Pin = {
 
@@ -88,7 +88,7 @@ export default function Home() {
     <div className="h-screen">
       <div className="flex h-full">
         <div className="w-[300px] bg-blue-200 p-4">
-          <Nav />
+          <UserNav />
         </div>
         <div className="flex-1 bg-gray-400 p-4">
           <Pins pins={pins}/>
