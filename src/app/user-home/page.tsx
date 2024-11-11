@@ -85,7 +85,7 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen">
+    <div className="h-full">
       <div className="flex h-full">
         <div className="w-[300px] bg-blue-200 p-4">
           <UserNav />
