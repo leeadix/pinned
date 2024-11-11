@@ -117,7 +117,7 @@ const Signup: React.FC<SigninProp> = ({onAddUser}) => {
                 <br /><br />
                 <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500 w-full"
                   id="password"
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   value={password}
                   onChange={handlePasswordChange}
@@ -126,7 +126,7 @@ const Signup: React.FC<SigninProp> = ({onAddUser}) => {
                 <br /><br />
                 <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500 w-full"
                   id="password-confirm"
-                  type="text"
+                  type="password"
                   placeholder="Confirm Password"
                   value={password}
                   onChange={handlePasswordChange}

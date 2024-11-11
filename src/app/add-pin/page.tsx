@@ -3,6 +3,7 @@ import { ReactEventHandler, useState } from "react";
 import React from "react";
 import Image from 'next/image';
 import Button from '../components/Button';
+import { useRouter } from "next/navigation";
 
 type Pin = {
   place: string;
@@ -60,6 +61,8 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
     setImageUrl('');
 
   };
+
+  const router = useRouter();
 
   return (
     <div className="bg-gray-400 p-2">
@@ -121,7 +124,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                 />
                 <br /><br />
                 <div className="text-center">
-                  <Button type="submit">ADD PIN</Button>
+                  <Button type="submit" onClick={() => router.push('/user-home')}>ADD PIN</Button>
                 </div>
             </form>
           </div>

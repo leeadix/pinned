@@ -83,7 +83,7 @@ const Signin: React.FC<SigninProp> = ({onAddUser}) => {
                 <br /><br />
                 <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
                   id="password"
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   value={password}
                   onChange={handlePasswordChange}

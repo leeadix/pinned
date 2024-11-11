@@ -26,24 +26,10 @@ export default function UserNav() {
                 priority />
             <br /><br />
             <button className="px-2 py-1 bg-white rounded font-inter font-bold text-blue-500" onClick={() => router.push("/add-pin")}>
-                Add Place
+                Add Pin
             </button>
         </div>
 
       </div>
     );
   }
-  
-
-  {/* <button
-className="px-2 py-1 bg-white rounded font-inter font-bold text-blue-500"
-onClick={() => router.push("/add-pin")}
->
-Add Items Here
-</button>
-<button
-className="px-2 py-1 bg-white rounded font-inter font-bold text-blue-500"
-onClick={() => router.push("/")}
->
-Signout
-</button> */}
