@@ -1,7 +1,6 @@
 "use client";
 import { ReactEventHandler, useState } from "react";
 import React from "react";
-import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import Button from '../components/Button';
 
@@ -47,16 +46,12 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
     event.preventDefault();
-    
-    const newPin = {
-      place: place,
-      type: type,
-      area: area,
-      address: address,
-      imageUrl: imageUrl,
-    }
 
-    setPins(newPin);
+    console.log(place);
+    console.log(type);
+    console.log(area);
+    console.log(address);
+    console.log(imageUrl);
 
     setPlace('');
     setType('');
@@ -65,8 +60,6 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
     setImageUrl('');
 
   };
-
-  const router = useRouter();
 
   return (
     <div className="bg-gray-400 p-2">
