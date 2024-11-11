@@ -44,7 +44,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
     setImageUrl(event.target.value);
   }
 
-  const onClick = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
     event.preventDefault();
     
@@ -82,7 +82,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
         <div className=" bg-white flex justify-center h-[600px] w-[500px]">
           <div className="flex-col justify-center">
             <h1 className="font-bold text-center text-4xl p-9 font-inter text-blue-500 text decoration underline">ADD NEW PIN</h1>
-            <form className=''onSubmit={onClick}>
+            <form className=''onSubmit={handleSubmit}>
                 <strong>Place:</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
                   id="place"
