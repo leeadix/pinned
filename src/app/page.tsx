@@ -5,7 +5,6 @@ import Pins from "./components/Pins";
 import Nav from "./components/Nav";
 
 type Pin = {
-
   id: number;
   place: string;
   type: string;

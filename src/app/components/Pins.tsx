@@ -3,7 +3,6 @@ import styles from './Pins.module.css';
 
 
 type Pin = {
-
     id: number;
     place: string;
     type: string;
