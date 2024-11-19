@@ -19,7 +19,8 @@ type PinsProps = {
 const Users: React.FC<PinsProps> = ({pins}) => {
     return(
         <div className={styles.pinsBox}>
-            {pins.map(pin =>(<Pin key={pin.id} pin={pin} />))}
+            {/* {pins.map(pin =>(<Pin key={pin.id} pin={pin} />))} */}
+            {pins.sort((a, b) => a.place.localeCompare(b.place)).map(pin => (<Pin key={pin.id} pin={pin} />))}
         </div>
     );
 }
