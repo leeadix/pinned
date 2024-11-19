@@ -67,7 +67,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
   return (
     <div className="bg-gray-400 p-2">
       <Image className=''
-        src='/images/pin_logo.png'           
+        src='/images/Pinned-Logo.png'           
         alt={`Pinned Logo`} 
         width={200} 
         height={100}

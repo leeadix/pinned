@@ -16,7 +16,7 @@ export default function Nav() {
         <br /><br />
 
         <Image className='mx-auto'
-            src='/images/pin_logo.png'           
+            src='/images/Pinned-Logo.png'           
             alt={`Pinned Logo`} 
             width={200} 
             height={100}

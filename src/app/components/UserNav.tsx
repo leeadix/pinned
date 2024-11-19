@@ -19,7 +19,7 @@ export default function UserNav() {
         <br /><br />
         <div className="flex flex-col">
             <Image className='mx-auto'
-                src='/images/pin_logo.png'           
+                src='/images/Pinned-Logo.png'           
                 alt={`Pinned Logo`} 
                 width={200} 
                 height={100}
