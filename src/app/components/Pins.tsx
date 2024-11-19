@@ -1,6 +1,9 @@
 import Pin from './Pin';
 import styles from './Pins.module.css';
 
+let userLat = 33.915009959696000;
+let userLon = -83.45577563155000;
+
 
 type Pin = {
     id: number;
@@ -9,6 +12,8 @@ type Pin = {
     area: string;
     address: string;
     imageUrl: string;
+    lat: number;
+    lon: number;
 };
 
 type PinsProps = {
