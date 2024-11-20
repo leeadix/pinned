@@ -3,7 +3,12 @@
 import React from "react";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation'
+import FilterBox from './FilterBox';
+import SortBox from './SortBox';
 
+const locations = ["UGA Campus", "Downtown", "Eastside", "Alps", "Epps Bridge"];
+const types = ["Restaurant", "Park", "Bar", "Museum"];
+const sorts = ["Name", "Location", "Type", "Distance"];
 
 export default function UserNav() {
     
@@ -28,6 +33,11 @@ export default function UserNav() {
             <button className="px-2 py-1 bg-white rounded font-inter font-bold text-blue-500" onClick={() => router.push("/add-pin")}>
                 Add Pin
             </button>
+
+            <br />
+            <SortBox sorts={sorts}></SortBox>
+            <FilterBox title="Type" categories={types}></FilterBox>
+            <FilterBox title='Locations' categories={locations}></FilterBox>
         </div>
 
       </div>

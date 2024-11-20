@@ -1,0 +1,42 @@
+import { useState } from 'react';
+import React from "react";
+
+
+export default function FilterBox ({title, categories}){
+
+    const [selectedCategories, setSelectedCategories] = useState([]);
+
+    const handleCheckboxChange = (category) => {
+        setSelectedCategories((prev) =>
+          prev.includes(category)
+            ? prev.filter((c) => c !== category)
+            : [...prev, category]
+        );
+      };
+
+    return(
+    <div className='bg-white rounded-md m-5'>
+        <div className='text-center text-3xl font-inter font-bold text-blue-500'>{title}</div>
+        <ul className='w-full'>
+            <li className='flex flex-col items-center'>
+                <div className='py-1 align-middle'>
+                    {categories.map((category) => (
+                        <div key={category}>
+                            <hr />
+                            <input 
+                                id="location_campus_search" 
+                                type="checkbox" 
+                                className="appearance-none w-5 h-5 rounded-full border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none align-middle" 
+                                checked={selectedCategories.includes(category)} 
+                                onChange={() => handleCheckboxChange(category)} 
+                                value="1" />
+                            <label className='text-center align-middle text-2xl font-inter w-full py-3 ms-2'> {category}</label>
+                        </div>
+                    ))}
+                </div>
+            </li>
+        </ul>
+    </div>
+    );
+}
+

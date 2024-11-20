@@ -2,8 +2,14 @@
 
 import React from "react";
 import Image from 'next/image';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import FilterBox from './FilterBox';
+import SortBox from './SortBox';
 
+
+const locations = ["UGA Campus", "Downtown", "Eastside", "Alps", "Epps Bridge"];
+const types = ["Restaurant", "Park", "Bar", "Museum"];
+const sorts = ["Name", "Location", "Type", "Distance"];
 
 export default function Nav() {
     
@@ -21,6 +27,12 @@ export default function Nav() {
             width={200} 
             height={100}
             priority />
+
+        <br /><br />
+        <SortBox sorts={sorts}></SortBox>
+        <FilterBox title="Type" categories={types}></FilterBox>
+        <FilterBox title='Locations' categories={locations}></FilterBox>
+
       </div>
     );
   }
