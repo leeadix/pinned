@@ -84,9 +84,9 @@ export default function Home() {
   };
 
   return (
-    <div className="h-full">
-      <div className="flex h-full">
-        <div className="w-[300px] bg-blue-200 p-4">
+    <div className="min-h-screen">
+      <div className="flex min-h-screen">
+        <div className="flex h-auto w-[300px] bg-blue-200 p-4">
           <Nav />
         </div>
         <div className="flex-1 bg-gray-400 p-4">
