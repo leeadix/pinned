@@ -7,11 +7,12 @@ import FilterBox from './FilterBox';
 import SortBox from './SortBox';
 
 
-const locations = ["UGA Campus", "Downtown", "Eastside", "Alps", "Epps Bridge"];
-const types = ["Restaurant", "Park", "Bar", "Museum"];
+const types = ["Food", "Park", "Bar", "Museum", "Theater", "Zoo"];
+const locations = ["UGA Campus", "Downtown", "East Side", "Alps", "Epps Bridge"];
 const sorts = ["Name", "Location", "Type", "Distance"];
 
-export default function Nav() {
+export default function Nav({sorts, setSort, selectedTypes, setSelectedTypes, selectedLoc, setSelectedLoc}:
+  {sorts: string, setSort: Function, selectedTypes: string[], setSelectedTypes: Function, selectedLoc: string[], setSelectedLoc: Function}) {
     
 
     const router = useRouter()
@@ -29,9 +30,9 @@ export default function Nav() {
             priority />
 
         <br /><br />
-        <SortBox sorts={sorts}></SortBox>
-        <FilterBox title="Type" categories={types}></FilterBox>
-        <FilterBox title='Locations' categories={locations}></FilterBox>
+        <SortBox sorts={sorts} setSort={setSort}></SortBox>
+        <FilterBox title="Type" categories={types} selectedCategories={selectedTypes} setSelectedCategories={setSelectedTypes}></FilterBox>
+        <FilterBox title='Locations' categories={locations} selectedCategories={selectedLoc} setSelectedCategories={setSelectedLoc}></FilterBox>
 
       </div>
     );

@@ -2,14 +2,14 @@ import { useState } from 'react';
 import React from "react";
 
 
-export default function FilterBox ({title, categories}){
+export default function FilterBox ({title, categories, selectedCategories, setSelectedCategories}:{title: string, categories: string[], selectedCategories: string[], setSelectedCategories: Function}){
 
-    const [selectedCategories, setSelectedCategories] = useState([]);
+    // const [selectedCategories, setSelectedCategories] = useState([]);
 
-    const handleCheckboxChange = (category) => {
-        setSelectedCategories((prev) =>
+    const handleCheckboxChange = (category: string) => {
+        setSelectedCategories((prev: any[]) =>
           prev.includes(category)
-            ? prev.filter((c) => c !== category)
+            ? prev.filter((c: string) => c !== category)
             : [...prev, category]
         );
       };

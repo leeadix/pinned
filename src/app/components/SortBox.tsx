@@ -2,14 +2,14 @@ import { useState } from 'react';
 import React from "react";
 
 
-export default function SortBox ({sorts}){
+const sortTypes = ["Name", "Area", "Type", "Distance"];
 
 
+export default function SortBox ({sorts, setSort}: {sorts: string, setSort: Function}){
 
-    const [selectedSorts, setSelectedSorts] = useState(sorts[0]);
+    const handleCheckboxChange = (sort: string) => {
 
-    const handleCheckboxChange = (sort) => {
-        setSelectedSorts(sort);
+        setSort(sort);
       };
 
     return(
@@ -18,14 +18,14 @@ export default function SortBox ({sorts}){
         <ul className='w-full'>
             <li className='flex flex-col items-center'>
                 <div className='py-1 align-middle'>
-                    {sorts.map((sort) => (
+                    {sortTypes.map((sort) => (
                         <div key={sort}>
                             <hr />
                             <input 
                                 id="location_campus_search" 
                                 type="checkbox" 
                                 className="appearance-none w-5 h-5 rounded-full border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none align-middle" 
-                                checked={selectedSorts === sort} 
+                                checked={sorts === sort} 
                                 onChange={() => handleCheckboxChange(sort)} 
                                 value="1" />
                             <label className='text-center align-middle text-2xl font-inter w-full py-3 ms-2'> {sort}</label>
