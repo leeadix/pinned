@@ -24,7 +24,7 @@ export default function FilterBox ({title, categories, selectedCategories, setSe
                         <div key={category}>
                             <hr />
                             <input 
-                                id="location_campus_search" 
+                                id="filter" 
                                 type="checkbox" 
                                 className="appearance-none w-5 h-5 rounded-full border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none align-middle" 
                                 checked={selectedCategories.includes(category)} 

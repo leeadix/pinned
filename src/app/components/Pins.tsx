@@ -4,7 +4,7 @@ import styles from './Pins.module.css';
 
 type Pin = {
     id: number;
-    place: string;
+    name: string;
     type: string;
     area: string;
     address: string;
@@ -14,14 +14,25 @@ type Pin = {
     lon: number;
 };
 
+let userLat = 33.95776534918996; 
+let userLon = -83.37535277631285;
+
+function getUserCoordinates(){
+  if(navigator){
+  navigator.geolocation.getCurrentPosition((position)=>{
+      userLat = position.coords.latitude;
+      userLon = position.coords.longitude;
+    //   console.log(`Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`);
+    //   console.log(`User Latitude: ${userLat}, User Longitude: ${userLon}`);
+  })}else{
+    alert("Geolocation features not available!\n Location set to the UGA Arch");
+  }
+}
+
 type PinsProps = {
     pins: Pin[];
 };
 
-type UserLoc = {
-    userLat: number;
-    userLon: number;
-};
 
 type SortsFiltersProps = {
     sorts: string;
@@ -29,16 +40,16 @@ type SortsFiltersProps = {
     selectedLoc: string[];
 };
 
-type ExtendedPinsProps = PinsProps & UserLoc & SortsFiltersProps;
+type ExtendedPinsProps = PinsProps & SortsFiltersProps;
 
-const Users: React.FC<ExtendedPinsProps> = ({pins, userLat, userLon, sorts, selectedTypes, selectedLoc}) => {
+const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selectedLoc}) => {
 
     if(sorts == "Name"){
         return(
             <div className={styles.pinsBox}>
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                     .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
-                    .sort((a,b) => a.place.localeCompare(b.place))
+                    .sort((a,b) => a.name.localeCompare(b.name))
                     .map(pin => (<Pin key={pin.id} pin={pin} />))}
             </div>
         );
@@ -64,6 +75,8 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, userLat, userLon, sorts, sele
 
     }else if(sorts == "Distance"){
         
+        getUserCoordinates();
+        
         pins.map((pin)=> {
             pin.distance = Math.sqrt(Math.pow(userLat-pin.lat,2)+Math.pow(userLon-pin.lon,2))
         })
@@ -82,7 +95,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, userLat, userLon, sorts, sele
             <div className={styles.pinsBox}>
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                 .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
-                .sort((a,b) => a.place.localeCompare(b.place))
+                .sort((a,b) => a.name.localeCompare(b.name))
                 .map(pin => (<Pin key={pin.id} pin={pin} />))}
             </div>
         );

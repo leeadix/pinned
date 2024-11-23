@@ -22,7 +22,7 @@ export default function SortBox ({sorts, setSort}: {sorts: string, setSort: Func
                         <div key={sort}>
                             <hr />
                             <input 
-                                id="location_campus_search" 
+                                id="sort" 
                                 type="checkbox" 
                                 className="appearance-none w-5 h-5 rounded-full border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none align-middle" 
                                 checked={sorts === sort} 
