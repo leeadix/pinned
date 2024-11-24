@@ -5,6 +5,8 @@ import styles from './Pins.module.css';
 type Pin = {
     id: number;
     name: string;
+    description: string;
+    googleUrl: string;
     type: string;
     area: string;
     address: string;
@@ -40,9 +42,14 @@ type SortsFiltersProps = {
     selectedLoc: string[];
 };
 
-type ExtendedPinsProps = PinsProps & SortsFiltersProps;
+type SetOpenPin = {
+    setOpenPin: Function;
+    setIsOverlayOpen: Function;
+  }
 
-const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selectedLoc}) => {
+type ExtendedPinsProps = PinsProps & SortsFiltersProps & SetOpenPin;
+
+const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selectedLoc, setOpenPin, setIsOverlayOpen}) => {
 
     if(sorts == "Name"){
         return(
@@ -50,7 +57,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                     .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
                     .sort((a,b) => a.name.localeCompare(b.name))
-                    .map(pin => (<Pin key={pin.id} pin={pin} />))}
+                    .map(pin => (<Pin key={pin.id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen}  pin={pin} />))}
             </div>
         );
     }else if(sorts == "Area"){
@@ -59,7 +66,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                 .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
                 .sort((a,b) => a.area.localeCompare(b.area))
-                .map(pin => (<Pin key={pin.id} pin={pin} />))}
+                .map(pin => (<Pin key={pin.id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
             </div>
         );
 
@@ -69,7 +76,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                 .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
                 .sort((a,b) => a.type.localeCompare(b.type))
-                .map(pin => (<Pin key={pin.id} pin={pin} />))}
+                .map(pin => (<Pin key={pin.id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
             </div>
         );
 
@@ -86,7 +93,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                 .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
                 .sort((a,b) => a.distance-b.distance)
-                .map(pin => (<Pin key={pin.id} pin={pin} />))}
+                .map(pin => (<Pin key={pin.id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
             </div>
         );
 
@@ -96,7 +103,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                 .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
                 .sort((a,b) => a.name.localeCompare(b.name))
-                .map(pin => (<Pin key={pin.id} pin={pin} />))}
+                .map(pin => (<Pin key={pin.id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
             </div>
         );
     }

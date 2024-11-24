@@ -7,10 +7,10 @@ const sortTypes = ["Name", "Area", "Type", "Distance"];
 
 export default function SortBox ({sorts, setSort}: {sorts: string, setSort: Function}){
 
-    const handleCheckboxChange = (sort: string) => {
+    // const handleCheckboxChange = (sort: string) => {
 
-        setSort(sort);
-      };
+    //     setSort(sort);
+    //   };
 
     return(
     <div className='bg-white rounded-md m-5'>
@@ -26,7 +26,7 @@ export default function SortBox ({sorts, setSort}: {sorts: string, setSort: Func
                                 type="checkbox" 
                                 className="appearance-none w-5 h-5 rounded-full border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none align-middle" 
                                 checked={sorts === sort} 
-                                onChange={() => handleCheckboxChange(sort)} 
+                                onChange={() => setSort(sort)} 
                                 value="1" />
                             <label className='text-center align-middle text-2xl font-inter w-full py-3 ms-2'> {sort}</label>
                         </div>

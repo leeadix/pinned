@@ -1,14 +1,17 @@
 "use client";
-import { useState } from 'react';
+import { use, useState } from 'react';
 import React from "react";
 import Pins from "./../components/Pins";
 import UserNav from "./../components/UserNav";
+import {PinOverlay} from '../components/PinOverlay';
 
 import Data from "../Pins.json" assert { type: "json" };
 
 type Pin = {
   id: number;
   name: string;
+  description: string;
+  googleUrl: string;
   type: string;
   area: string;
   address: string;
@@ -35,6 +38,15 @@ export default function Home() {
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [selectedLoc, setSelectedLoc] = useState([]);
 
+  const [isPinOverlayOpen, setIsOverlayOpen] = useState(false);
+
+  const [openPin, setOpenPin] = useState<Pin>(pinsData[0]);
+
+  // const openPinOverlay = (pin: Pin) =>{
+  //   setOpenPin(pin);
+  //   setIsOverlayOpen(true);
+
+  // }
 
   return (
     <div className="min-h-screen">
@@ -43,9 +55,16 @@ export default function Home() {
           <UserNav sorts={sorts} setSort={setSort} selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} selectedLoc={selectedLoc} setSelectedLoc={setSelectedLoc} />
         </div>
         <div className="flex-1 bg-gray-400 p-4">
-          <Pins pins={pins} sorts={sorts} selectedTypes={selectedTypes} selectedLoc={selectedLoc} />
+          <Pins pins={pins} sorts={sorts} selectedTypes={selectedTypes} selectedLoc={selectedLoc} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} />
         </div>
       </div>
+      <PinOverlay
+        isOpen = {isPinOverlayOpen}
+        onClose={()=> setIsOverlayOpen(false)}
+        pin = {openPin}
+        >
+          
+      </PinOverlay>
     </div>
   );
 }
