@@ -1,12 +1,12 @@
 "use client";
 import { useState } from 'react';
 import React from "react";
-import Pins from "../components/Pins";
-import Nav from "../components/Nav";
+import Pins from "../../components/Pins";
+import UserNav from "../../components/UserNav";
 import { useParams, useRouter } from "next/navigation";
-import {PinOverlay} from '../components/PinOverlay';
+import {PinOverlay} from '../../components/PinOverlay';
 
-import Data from "../Pins.json" assert { type: "json" };
+import Data from "../../Pins.json" assert { type: "json" };
 import { Router } from 'next/router';
 
 type Pin = {
@@ -56,16 +56,16 @@ export default function Home({params}:{params: {id: string}}) {
     <div className="min-h-screen">
       <div className="flex min-h-screen">
         <div className="w-[300px] bg-blue-200 p-4">
-          <Nav sorts={sorts} setSort={setSort} selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} selectedLoc={selectedLoc} setSelectedLoc={setSelectedLoc} />
+          <UserNav sorts={sorts} setSort={setSort} selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} selectedLoc={selectedLoc} setSelectedLoc={setSelectedLoc} />
         </div>
         <div className="flex-1 bg-gray-400 p-4">
-        <Pins pins={pins} sorts={sorts} selectedTypes={selectedTypes} selectedLoc={selectedLoc} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} />
+          <Pins pins={pins} sorts={sorts} selectedTypes={selectedTypes} selectedLoc={selectedLoc} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} />
         </div>
       </div>
       <PinOverlay
         isOpen = {isPinOverlayOpen}
         onClose={async () => {
-          window.history.replaceState(null, "", "/");
+          window.history.replaceState(null, "", "/user-home/");
           setIsOverlayOpen(false);
         }}
         pin = {openPin}

@@ -8,7 +8,7 @@ import {PinOverlay} from './components/PinOverlay';
 import Data from "./Pins.json" assert { type: "json" };
 
 type Pin = {
-  id: number;
+  id: string;
   name: string;
   description: string;
   googleUrl: string;
@@ -54,7 +54,10 @@ export default function Home() {
       </div>
       <PinOverlay
         isOpen = {isPinOverlayOpen}
-        onClose={()=> setIsOverlayOpen(false)}
+        onClose={async () => {
+          window.history.replaceState(null, "", "/");
+          setIsOverlayOpen(false);
+        }}
         pin = {openPin}
         >
           

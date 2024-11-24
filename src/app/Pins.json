@@ -1,6 +1,6 @@
 [
     {
-    "id": 1,
+    "id": "1",
     "name" : "Botanical Gardens",
     "description": "This is an example description. This is an example description. This is an example description. This is an example description. This is an example description.",
     "googleUrl": "https://maps.app.goo.gl/fCyYNHr36zALG3VA6",
@@ -13,7 +13,7 @@
     "lon": -83.38459137801536
     },
     {
-    "id": 2,
+    "id": "2",
     "name": "Taqueria Tsunami",
     "description": "Local Latin-Asian fusion chain serving tacos, quesadillas & bowls in a relaxed, stylish space.",
     "googleUrl": "https://maps.app.goo.gl/Hc2Az5931mNUnbUD7",
@@ -26,7 +26,7 @@
     "lon": -83.37419667743495
     },
     {
-    "id": 3,
+    "id": "3",
     "name": "Southeast Clarke Park",
     "description": "Spacious park with walking trails, a modern playground & a dog park, plus multisport facilities.",
     "googleUrl": "https://maps.app.goo.gl/xrtkLFasqL9Wy3nb8",
@@ -39,7 +39,7 @@
     "lon": -83.30694950228845
     },
     {
-    "id": 4,
+    "id": "4",
     "name": "Rook and Pawn",
     "description": "This is an example description. This is an example description. This is an example description. This is an example description. This is an example description.",
     "googleUrl": "https://maps.app.goo.gl/Q1p94b362k5Bm3Qf9",
@@ -52,7 +52,7 @@
     "lon": -83.38019876314472
     },
     {
-    "id": 5,
+    "id": "5",
     "name": "Museum of Art",
     "description": "Long-standing art museum at University of Georgia hosting rotating exhibits & educational programs.",
     "googleUrl": "https://maps.app.goo.gl/sJH15DUd99EXLhCo7",
@@ -65,7 +65,7 @@
     "lon": -83.36994734771635
     },
     {
-    "id": 6,
+    "id": "6",
     "name": "University 16 Theater",
     "description": "This is an example description. This is an example description. This is an example description. This is an example description. This is an example description.",
     "googleUrl": "https://maps.app.goo.gl/ChDZPue4eH7viHZ49",
@@ -78,7 +78,7 @@
     "lon": -83.45577563155872
     },
     {
-    "id": 7,
+    "id": "7",
     "name": "Bear Hollow Zoo",
     "description": "This is an example description. This is an example description. This is an example description. This is an example description. This is an example description.",
     "googleUrl": "https://maps.app.goo.gl/vnjTwhEiXxb59UZX9",

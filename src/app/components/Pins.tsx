@@ -3,7 +3,7 @@ import styles from './Pins.module.css';
 
 
 type Pin = {
-    id: number;
+    id: string;
     name: string;
     description: string;
     googleUrl: string;

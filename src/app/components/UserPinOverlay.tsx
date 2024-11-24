@@ -17,9 +17,9 @@ import Pin from './Pin';
 // };
 
 //:{isOpen: boolean, onClose: any, children: any[]}
-export function PinOverlay({isOpen, onClose, pin}:{isOpen: boolean, onClose: any, pin: any}){
+export function UserPinOverlay({isOpen, onClose, pin}:{isOpen: boolean, onClose: any, pin: any}){
 
-    if(isOpen==true){window.history.replaceState(null, "", pin.id)}
+    if(isOpen==true){window.history.replaceState(null, "", "/user-home/" + pin.id)}
     
 
     return(

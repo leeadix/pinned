@@ -4,7 +4,7 @@ import Card from './Card';
 
 type PinProps = {
   pin: {
-    id: number;
+    id: string;
     name: string;
     description: string;
     googleUrl: string;

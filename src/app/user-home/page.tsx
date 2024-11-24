@@ -3,12 +3,13 @@ import { use, useState } from 'react';
 import React from "react";
 import Pins from "./../components/Pins";
 import UserNav from "./../components/UserNav";
-import {PinOverlay} from '../components/PinOverlay';
+import {UserPinOverlay} from '../components/UserPinOverlay';
 
 import Data from "../Pins.json" assert { type: "json" };
 
+
 type Pin = {
-  id: number;
+  id: string;
   name: string;
   description: string;
   googleUrl: string;
@@ -58,13 +59,16 @@ export default function Home() {
           <Pins pins={pins} sorts={sorts} selectedTypes={selectedTypes} selectedLoc={selectedLoc} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} />
         </div>
       </div>
-      <PinOverlay
+      <UserPinOverlay
         isOpen = {isPinOverlayOpen}
-        onClose={()=> setIsOverlayOpen(false)}
+        onClose={async () => {
+          window.history.replaceState(null, "", "/user-home/");
+          setIsOverlayOpen(false);
+        }}
         pin = {openPin}
         >
           
-      </PinOverlay>
+      </UserPinOverlay>
     </div>
   );
 }
