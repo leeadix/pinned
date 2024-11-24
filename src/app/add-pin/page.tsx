@@ -6,11 +6,13 @@ import Button from '../components/Button';
 import { useRouter } from "next/navigation";
 
 type Pin = {
-  place: string;
-  type: string;
-  area: string;
-  address: string;
-  imageUrl: string;
+    place: string;
+    type: string;
+    area: string;
+    address: string;
+    lat: string;
+    lon: string;
+    imageUrl: string;
 };
 
 type addPinProp = {
@@ -23,6 +25,8 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
   const[type, setType] = useState<string>('');
   const[area, setArea] = useState<string>('');
   const[address, setAddress] = useState<string>('');
+  const[lat, setLat] = useState<string>();
+  const[lon, setLon] = useState<string>();
   const[imageUrl, setImageUrl] = useState<string>('');
 
   const  handlePlaceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +44,14 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
     setAddress(event.target.value);
   }
 
+  const  handleLatChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLat(event.target.value);
+  }
+
+  const  handleLonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLon(event.target.value);
+  }
+
   const  handleUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setImageUrl(event.target.value);
   }
@@ -52,12 +64,16 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
     console.log(type);
     console.log(area);
     console.log(address);
+    console.log(lat);
+    console.log(lon);
     console.log(imageUrl);
 
     setPlace('');
     setType('');
     setArea('');
     setAddress('');
+    setLat('');
+    setLon('');
     setImageUrl('');
 
   };
@@ -112,6 +128,21 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                   type="text"
                   value={address}
                   onChange={handleAddressChange}
+                />
+                <br /><br />
+                <strong>Lat/Long:</strong> &nbsp;&nbsp;&nbsp;
+                <input className="p-2 border border-gray-300 margin-right:20px w-20 rounded-md text-base focus:outline-none m-right-20 focus:border-blue-500"
+                  id="lat"
+                  type="text"
+                  value={lat}
+                  onChange={handleLatChange}
+                /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <strong></strong> &nbsp;
+                <input className="p-2 border border-gray-300 w-20 rounded-md text-base focus:outline-none focus:border-blue-500"
+                  id="lon"
+                  type="text"
+                  value={lon}
+                  onChange={handleLonChange}
                 />
                 <br /><br />
                 <strong>ImageURL:</strong> &nbsp;
