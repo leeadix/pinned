@@ -6,12 +6,14 @@ import Button from '../components/Button';
 import { useRouter } from "next/navigation";
 
 type Pin = {
-    place: string;
+    name: string;
     type: string;
     area: string;
     address: string;
+    description: string;
     lat: string;
     lon: string;
+    googleUrl: string;
     imageUrl: string;
 };
 
@@ -21,38 +23,50 @@ type addPinProp = {
 
 const AddPin: React.FC<addPinProp> = ({setPins}) => {
 
-  const[place, setPlace] = useState<string>('');
+  const[name, setName] = useState<string>('');
   const[type, setType] = useState<string>('');
   const[area, setArea] = useState<string>('');
   const[address, setAddress] = useState<string>('');
-  const[lat, setLat] = useState<string>();
-  const[lon, setLon] = useState<string>();
+  const[description, setDescription] = useState<string>('');
+  const[lat, setLat] = useState<string>('');
+  const[lon, setLon] = useState<string>('');
+  const[latLonInput, setLatLonInput] = useState<string>('');
+  const[googleUrl, setGoogleUrl] = useState<string>('');
   const[imageUrl, setImageUrl] = useState<string>('');
 
-  const  handlePlaceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPlace(event.target.value);
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
   }
-  const  handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setType(event.target.value);
   }
 
-  const  handleAreaChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAreaChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setArea(event.target.value);
   }
 
-  const  handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAddress(event.target.value);
   }
 
-  const  handleLatChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLat(event.target.value);
+  const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(event.target.value);
   }
 
-  const  handleLonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLon(event.target.value);
+  const handleLatLonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLatLonInput(event.target.value); 
+    const cords = event.target.value.split(",").map((cord) => cord.trim());
+    if (cords.length === 2) {
+      setLat(cords[0]);
+      setLon(cords[1]);
+    }
   }
 
-  const  handleUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleGoogleUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setGoogleUrl(event.target.value);
+  }
+
+  const handleImageUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setImageUrl(event.target.value);
   }
 
@@ -60,20 +74,23 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
 
     event.preventDefault();
 
-    console.log(place);
+    console.log(name);
     console.log(type);
     console.log(area);
     console.log(address);
+    console.log(description);
     console.log(lat);
     console.log(lon);
+    console.log(googleUrl);
     console.log(imageUrl);
 
-    setPlace('');
+    setName('');
     setType('');
     setArea('');
     setAddress('');
-    setLat('');
-    setLon('');
+    setDescription('');
+    setLatLonInput('');
+    setGoogleUrl('')
     setImageUrl('');
 
   };
@@ -81,7 +98,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
   const router = useRouter();
 
   return (
-    <div className="bg-gray-400 p-2">
+    <div className="bg-slate-300 p-2">
       <Image className=''
         src='/images/Pinned-Logo.png'           
         alt={`Pinned Logo`} 
@@ -89,40 +106,57 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
         height={100}
         priority />
 
-      <div className="flex justify-center align-center h-screen bg-gray-400">
+      <div className="flex justify-center align-center h-screen bg-slate-300">
 
-        <div className=" bg-white flex justify-center h-[600px] w-[500px]">
+        <div className=" bg-white flex justify-center h-[750px] w-[600px]">
           <div className="flex-col justify-center">
             <h1 className="font-bold text-center text-4xl p-9 font-inter text-blue-500 text decoration underline">ADD NEW PIN</h1>
             <form className=''onSubmit={handleSubmit}>
-                <strong>Place:</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <strong className="mr-14">Name:*</strong>
                 <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
                   id="place"
                   type="text"
-                  value={place}
-                  onChange={handlePlaceChange}
+                  value={name}
+                  onChange={handleNameChange}
                   required
                 />
                 <br /><br />
-                <strong>Type:</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                <strong className="mr-16">Type:*</strong>
+                <select
+                  className="pt-2 pb-2 pl-2 pr-[4.75rem] border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
                   id="type"
-                  type="text"
                   value={type}
                   onChange={handleTypeChange}
                   required
-                />
+                >
+                  <option value="" disabled>Select a Type</option>  
+                  <option value="restaurant">Restaurant</option>
+                  <option value="store">Park</option>
+                  <option value="office">Bar</option>
+                  <option value="park">Museum</option>
+                  <option value="hotel">Theater</option>
+                  <option value="zoo">Zoo</option>
+                  <option value="other">Other</option>
+                </select>
                 <br /><br />
-                <strong>Area:</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                <strong className="mr-16">Area:*</strong>
+                <select
+                  className="pt-2 pb-2 pl-2 pr-[4.25rem] border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
                   id="area"
-                  type="text"
                   value={area}
                   onChange={handleAreaChange}
                   required
-                />
+                >
+                  <option value="" disabled>Select an Area</option>  
+                  <option value="campus">UGA Campus</option>
+                  <option value="downtown">Downtown</option>
+                  <option value="east side">East Side</option>
+                  <option value="alps">Alps</option>
+                  <option value="hotel">Epps Bridge</option>
+                  <option value="other">Other</option>
+                </select>
                 <br /><br />
-                <strong>Address:</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                <strong className="mr-10">Address:</strong> 
                 <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
                   id="address"
                   type="text"
@@ -130,28 +164,41 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                   onChange={handleAddressChange}
                 />
                 <br /><br />
-                <strong>Lat/Long:</strong> &nbsp;&nbsp;&nbsp;
-                <input className="p-2 border border-gray-300 margin-right:20px w-20 rounded-md text-base focus:outline-none m-right-20 focus:border-blue-500"
-                  id="lat"
+                <div className="flex mb-6">
+                  <strong className="mr-3">Description:*</strong>
+                  <textarea
+                    className="p-3 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                    id="description"
+                    value={description}
+                    onChange={handleDescriptionChange}
+                    required
+                  />
+                </div>
+                <strong className="mr-2">Coordinates:*</strong> 
+                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                  id="lat/lon"
                   type="text"
-                  value={lat}
-                  onChange={handleLatChange}
-                /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <strong></strong> &nbsp;
-                <input className="p-2 border border-gray-300 w-20 rounded-md text-base focus:outline-none focus:border-blue-500"
-                  id="lon"
-                  type="text"
-                  value={lon}
-                  onChange={handleLonChange}
+                  value={latLonInput}
+                  onChange={handleLatLonChange}
+                  placeholder="Latitude, Longitude"
+                  required
                 />
                 <br /><br />
-                <strong>ImageURL:</strong> &nbsp;
+                <strong className='mr-5'>ImageURL:*</strong> 
                 <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
                   id="imageUrl"
                   type="text"
                   value={imageUrl}
-                  onChange={handleUrlChange}
+                  onChange={handleImageUrlChange}
                   required
+                />
+                <br /><br />
+                <strong className="mr-4">GoogleURL:</strong> 
+                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                  id="googleUrl"
+                  type="text"
+                  value={googleUrl}
+                  onChange={handleGoogleUrlChange}
                 />
                 <br /><br />
                 <div className="text-center">
