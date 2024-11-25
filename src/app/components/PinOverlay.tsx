@@ -25,7 +25,7 @@ export function PinOverlay({
   isOpen: boolean;
   onClose: () => void;
   pin?: {
-    id: number;
+    id: string;
     name: string;
     type: string;
     area: string;
