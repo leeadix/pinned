@@ -130,13 +130,14 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                   required
                 >
                   <option value="" disabled>Select a Type</option>  
-                  <option value="restaurant">Restaurant</option>
-                  <option value="store">Park</option>
-                  <option value="office">Bar</option>
-                  <option value="park">Museum</option>
-                  <option value="hotel">Theater</option>
-                  <option value="zoo">Zoo</option>
-                  <option value="other">Other</option>
+                  <option value="Restaurant">Restaurant</option>
+                  <option value="Store">Store</option>
+                  <option value="Park">Park</option>
+                  <option value="Bar">Bar</option>
+                  <option value="Museum">Museum</option>
+                  <option value="Theater">Theater</option>
+                  <option value="Zoo">Zoo</option>
+                  <option value="Other">Other</option>
                 </select>
                 <br /><br />
                 <strong className="mr-16">Area:*</strong>
@@ -148,12 +149,12 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                   required
                 >
                   <option value="" disabled>Select an Area</option>  
-                  <option value="campus">UGA Campus</option>
-                  <option value="downtown">Downtown</option>
-                  <option value="east side">East Side</option>
-                  <option value="alps">Alps</option>
-                  <option value="hotel">Epps Bridge</option>
-                  <option value="other">Other</option>
+                  <option value="Campus">UGA Campus</option>
+                  <option value="Downtown">Downtown</option>
+                  <option value="East Side">East Side</option>
+                  <option value="Alps">Alps</option>
+                  <option value="Epps Bridge">Epps Bridge</option>
+                  <option value="Other">Other</option>
                 </select>
                 <br /><br />
                 <strong className="mr-10">Address:</strong> 
