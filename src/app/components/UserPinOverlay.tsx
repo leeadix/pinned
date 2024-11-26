@@ -38,7 +38,7 @@ export function UserPinOverlay({isOpen, onClose, pin}:{isOpen: boolean, onClose:
                                 priority
                             />
                             <div className="relative m-auto w-fit bg-opacity-75 bg-black z-30 rounded-lg px-2 my-[100px]">
-                                <h1 className="relative z-30 text-center text-shadow text-black  text-[60px]">{pin.name}</h1>
+                                <h1 className="relative z-30 text-center text-shadow text-white  text-[60px]">{pin.name}</h1>
                             </div>
                         </div>
                         <div className="flex  space-between m-auto bg-slate-50">
