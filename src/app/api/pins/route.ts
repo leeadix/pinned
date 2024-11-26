@@ -5,9 +5,9 @@ import { NextRequest } from "next/server";
 import mongoose from "mongoose";
 
 export async function POST(request: NextRequest) {
-   const { title, place, type, area, address, imageUrl } = await request.json();
+   const { name, description, googleUrl, type, area, address, imageUrl, lat, lon } = await request.json();
    await connectMongoDB();
-   await Pin.create({ title, place, type, area, address, imageUrl });
+   await Pin.create({ name, description, googleUrl, type, area, address, imageUrl, lat, lon });
    return NextResponse.json({ message: "Pin added successfully" }, { status: 201 });
 }
 

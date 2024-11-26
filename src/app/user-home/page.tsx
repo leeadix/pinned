@@ -1,5 +1,5 @@
 "use client";
-import { use, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import React from "react";
 import Pins from "./../components/Pins";
 import UserNav from "./../components/UserNav";
@@ -9,7 +9,7 @@ import Data from "../Pins.json" assert { type: "json" };
 
 
 type Pin = {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   googleUrl: string;
@@ -22,11 +22,29 @@ type Pin = {
   lon: number;
 };
 
-const pinsData: Pin[] = Data;
+// const pinsData: Pin[] = Data;
 
 export default function Home() {
 
-  const[pins, setPins] = useState<Pin[]>(pinsData);
+  // const[pins, setPins] = useState<Pin[]>(pinsData);
+  const[pins, setPins] = useState<Pin[]>([]);
+
+  useEffect(()=>{
+    const fetchPins = async ()=>{
+      try{
+        const response = await fetch('api/pins');
+        if(!response.ok){
+          throw new Error('Network response was not ok');
+        }
+        const pinsData = await response.json();
+        setPins(pinsData.pins);
+      }catch(err){
+        console.log('Error from showPins',err);
+      }
+    };
+    fetchPins();
+  }, []);
+
 
   const newPin = (newPin: Pin) => {
 
@@ -41,7 +59,8 @@ export default function Home() {
 
   const [isPinOverlayOpen, setIsOverlayOpen] = useState(false);
 
-  const [openPin, setOpenPin] = useState<Pin>(pinsData[0]);
+  const [openPin, setOpenPin] = useState<Pin>();
+  //pinsData[0]
 
   // const openPinOverlay = (pin: Pin) =>{
   //   setOpenPin(pin);

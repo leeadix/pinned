@@ -20,9 +20,9 @@ export async function GET(request:NextRequest, { params }:RouteParams) {
 
 export async function PUT(request:NextRequest, { params }:RouteParams) {
    const { id } = params;
-   const { title: title, place: place, type: type, area: area, address: address, imageUrl: imageUrl } = await request.json();
+   const { name: name, description: description, googleUrl: googleUrl, type: type, area: area, address: address, imageUrl: imageUrl, lat: lat, lon: lon } = await request.json();
    await connectMongoDB();
-   await Pin.findByIdAndUpdate(id, { title, place, type, area, address, imageUrl });
+   await Pin.findByIdAndUpdate(id, { name, description, googleUrl, type, area, address, imageUrl, lat, lon });
    return NextResponse.json({ message: "Pin updated " }, { status: 200 });
 }
 

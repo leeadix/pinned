@@ -2,35 +2,53 @@ import mongoose, { Schema, Document, Model } from "mongoose";
 
 
 interface IPin extends Document {
-   title: string;
-   place: string;
-   type: string;
-   area: string;
-   address: string;
-   imageUrl: string;
-   updated_date: Date;
+    name: String;
+    description: String;
+    googleUrl: String;
+    type: String;
+    area: String;
+    address: String;
+    imageUrl: String;
+    lat: Number;
+    lon: Number;
+    updated_date: Date;
 }
 
 
 const pinSchema = new Schema<IPin>({
-   title: {
+   name: {
        type: String,
        required: true,
    },
-   place: {
+   description: {
+       type: String,
+       required: true,
+   },
+   googleUrl: {
        type: String,
    },
    type: {
        type: String,
+       required: true,
    },
    area: {
        type: String,
+       required: true,
    },
    address: {
        type: String,
    },
    imageUrl: {
        type: String,
+       required: true,
+   },
+   lat: {
+    type: String,
+    required: true,
+   },
+   lon: {
+    type: String,
+    required: true,
    },
    updated_date: {
        type: Date,

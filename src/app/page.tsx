@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from "react";
 import Pins from "./components/Pins";
 import Nav from "./components/Nav";
@@ -8,7 +8,7 @@ import {PinOverlay} from './components/PinOverlay';
 import Data from "./Pins.json" assert { type: "json" };
 
 type Pin = {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   googleUrl: string;
@@ -21,11 +21,30 @@ type Pin = {
   lon: number;
 };
 
-const pinsData: Pin[] = Data;
+// const pinsData: Pin[] = Data;
 
 export default function Home() {
 
-  const[pins, setPins] = useState<Pin[]>(pinsData);
+  
+
+  const[pins, setPins] = useState<Pin[]>([]);
+
+  useEffect(()=>{
+    const fetchPins = async ()=>{
+      try{
+        const response = await fetch('api/pins');
+        if(!response.ok){
+          throw new Error('Network response was not ok');
+        }
+        const pinsData = await response.json();
+        setPins(pinsData.pins);
+      }catch(err){
+        console.log('Error from showPins',err);
+      }
+    };
+    fetchPins();
+  }, []);
+
 
   const newPin = (newPin: Pin) => {
 
@@ -40,7 +59,7 @@ export default function Home() {
 
   const [isPinOverlayOpen, setIsOverlayOpen] = useState(false);
 
-  const [openPin, setOpenPin] = useState<Pin>(pinsData[0]);
+  const [openPin, setOpenPin] = useState<Pin>();
 
   return (
     <div className="min-h-screen bg-center bg-fixed bg-[url('https://content.r9cdn.net/rimg/dimg/3e/2c/96e426b6-city-17759-1688702c4c5.jpg?crop=true&width=1366&height=768&xhint=739&yhint=908')] bg-cover">

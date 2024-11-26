@@ -4,7 +4,7 @@ import Card from './Card';
 
 type PinProps = {
   pin: {
-    id: string;
+    _id: string;
     name: string;
     description: string;
     googleUrl: string;
@@ -24,7 +24,7 @@ type ExtendedPinsProps = PinProps & SetOpenPin;
 
 const Pin: React.FC<ExtendedPinsProps> = ({ pin, setOpenPin, setIsOverlayOpen}) => {
     return (
-      <Card  className={styles.pinItem} onClick={() => {setOpenPin(pin); setIsOverlayOpen(true);}} key={pin.id}>
+      <Card  className={styles.pinItem} onClick={() => {setOpenPin(pin); setIsOverlayOpen(true);}} key={pin._id}>
         <Image className={styles.pinImg}
           src={pin.imageUrl} 
           alt={`picture of ${pin.name}`} 

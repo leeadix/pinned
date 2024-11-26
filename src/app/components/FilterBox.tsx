@@ -26,7 +26,7 @@ export default function FilterBox ({title, categories, selectedCategories, setSe
                             <input 
                                 id="filter" 
                                 type="checkbox" 
-                                className="appearance-none w-5 h-5 rounded-full border border-gray-300 bg-white checked:bg-red-500 checked:border-red-500 focus:outline-none align-middle" 
+                                className="appearance-none cursor-pointer w-5 h-5 rounded-full border border-gray-300 bg-white checked:bg-red-500 checked:border-red-500 focus:outline-none align-middle" 
                                 checked={selectedCategories.includes(category)} 
                                 onChange={() => handleCheckboxChange(category)} 
                                 value="1" />

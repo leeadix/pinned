@@ -4,6 +4,7 @@ import React from "react";
 import Image from 'next/image';
 import Button from '../components/Button';
 import { useRouter } from "next/navigation";
+import Pin from '../components/Pin';
 
 type Pin = {
     name: string;
@@ -70,19 +71,50 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
     setImageUrl(event.target.value);
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 
+    
     event.preventDefault();
 
-    console.log(name);
-    console.log(type);
-    console.log(area);
-    console.log(address);
-    console.log(description);
-    console.log(lat);
-    console.log(lon);
-    console.log(googleUrl);
-    console.log(imageUrl);
+    const pin = {
+      name: name,
+      type: type,
+      area: area,
+      address: address,
+      description: description,
+      lat: lat,
+      lon: lon,
+      googleUrl: googleUrl,
+      imageUrl: imageUrl,
+    }
+
+    try{
+      const response = await fetch('/api/pins',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(pin),
+        
+      });
+
+      if(!response.ok){
+        throw new Error('Network response was not ok');
+      }
+
+    }catch(err){
+
+    }
+
+    // console.log(name);
+    // console.log(type);
+    // console.log(area);
+    // console.log(address);
+    // console.log(description);
+    // console.log(lat);
+    // console.log(lon);
+    // console.log(googleUrl);
+    // console.log(imageUrl);
 
     setName('');
     setType('');
@@ -109,10 +141,12 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
 
       <div className="pt-5 flex justify-center align-center h-[1000px] bg-clear-300">
 
-        <div className=" bg-white flex justify-center h-[700px] w-[400px] shadow-lg p-1 rounded-lg border-t-4 border-red-400 bg-white">
+        <div className=" bg-white flex justify-center h-[500px] w-[800px] shadow-lg p-1 rounded-lg border-t-4 border-red-400 bg-white">
           <div className="flex-col justify-center">
             <h1 className="font-bold text-center text-4xl p-5 font-inter text-red-500 text decoration underline">ADD NEW PIN</h1>
             <form className=''onSubmit={handleSubmit}>
+              <div className="flex">
+                <div className="pr-[40px]">
                 <strong className="mr-14">Name:*</strong>
                 <input className="p-1 border border-gray-300 rounded-md text-base focus:outline-none focus:border-red-500"
                   id="place"
@@ -166,6 +200,8 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                   onChange={handleAddressChange}
                 />
                 <br /><br />
+                </div>
+                <div>
                 <div className="flex mb-6">
                   <strong className="mr-3">Description:*</strong>
                   <textarea
@@ -202,10 +238,13 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                   value={googleUrl}
                   onChange={handleGoogleUrlChange}
                 />
+                </div>
+                </div>
                 <br /><br />
                 <div className="text-center">
                   <Button type="submit" onClick={() => router.push('/user-home')}>ADD PIN</Button>
                 </div>
+                
             </form>
           </div>
         </div>

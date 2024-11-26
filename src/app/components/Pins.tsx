@@ -3,7 +3,7 @@ import styles from './Pins.module.css';
 
 
 type Pin = {
-    id: string;
+    _id: string;
     name: string;
     description: string;
     googleUrl: string;
@@ -15,9 +15,9 @@ type Pin = {
     lat: number;
     lon: number;
 };
-
-let userLat = 33.95776534918996; 
-let userLon = -83.37535277631285;
+let userLat = 33.938330359797355; //ramsey
+let userLon = -83.37087607162724;
+// 33.95776534918996,-83.37535277631285 arches
 
 function getUserCoordinates(){
   if(navigator){
@@ -57,7 +57,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                     .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
                     .sort((a,b) => a.name.localeCompare(b.name))
-                    .map(pin => (<Pin key={pin.id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen}  pin={pin} />))}
+                    .map(pin => (<Pin key={pin._id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen}  pin={pin} />))}
             </div>
         );
     }else if(sorts == "Area"){
@@ -66,7 +66,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                 .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
                 .sort((a,b) => a.area.localeCompare(b.area))
-                .map(pin => (<Pin key={pin.id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
+                .map(pin => (<Pin key={pin._id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
             </div>
         );
 
@@ -76,7 +76,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                 .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
                 .sort((a,b) => a.type.localeCompare(b.type))
-                .map(pin => (<Pin key={pin.id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
+                .map(pin => (<Pin key={pin._id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
             </div>
         );
 
@@ -93,7 +93,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                 .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
                 .sort((a,b) => a.distance-b.distance)
-                .map(pin => (<Pin key={pin.id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
+                .map(pin => (<Pin key={pin._id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
             </div>
         );
 
@@ -103,7 +103,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
                 {pins.filter((pin)=> {if(selectedTypes.length === 0){return pin;}else if(selectedTypes.includes(pin.type)){return pin}})
                 .filter((pin)=> {if(selectedLoc.length === 0){return pin;}else if(selectedLoc.includes(pin.area)){return pin}})
                 .sort((a,b) => a.name.localeCompare(b.name))
-                .map(pin => (<Pin key={pin.id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
+                .map(pin => (<Pin key={pin._id} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} pin={pin} />))}
             </div>
         );
     }

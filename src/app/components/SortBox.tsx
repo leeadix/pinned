@@ -24,7 +24,7 @@ export default function SortBox ({sorts, setSort}: {sorts: string, setSort: Func
                             <input 
                                 id="sort" 
                                 type="checkbox" 
-                                className="appearance-none w-5 h-5 rounded-full border border-gray-300 bg-white checked:bg-red-500 checked:border-red-500 focus:outline-none align-middle" 
+                                className="appearance-none cursor-pointer w-5 h-5 rounded-full border border-gray-300 bg-white checked:bg-red-500 checked:border-red-500 focus:outline-none align-middle" 
                                 checked={sorts === sort} 
                                 onChange={() => setSort(sort)} 
                                 value="1" />

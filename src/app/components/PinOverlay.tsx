@@ -25,7 +25,7 @@ export function PinOverlay({
   isOpen: boolean;
   onClose: () => void;
   pin?: {
-    id: string;
+    _id: string;
     name: string;
     type: string;
     area: string;
@@ -36,8 +36,8 @@ export function PinOverlay({
   };
 }) {
   useEffect(() => {
-    if (isOpen && pin?.id) {
-      window.history.replaceState(null, "", pin.id.toString());
+    if (isOpen && pin?._id) {
+      window.history.replaceState(null, "", pin._id);
     }
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
@@ -97,7 +97,7 @@ export function PinOverlay({
             <h1>{pin.address}</h1>
           </div>
         </div>
-        <div className="flex p-5 m-auto bg-slate-50 text-black font-bold">
+        <div className="flex p-5 m-auto bg-slate-50 text-black rounded-lg font-bold">
           <h1>{pin.description}</h1>
         </div>
       </div>
