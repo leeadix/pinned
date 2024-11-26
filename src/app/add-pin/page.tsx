@@ -98,7 +98,8 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
   const router = useRouter();
 
   return (
-    <div className="bg-slate-300 p-2">
+    <div className="h-screen bg-center bg-fixed bg-[url('https://content.r9cdn.net/rimg/dimg/3e/2c/96e426b6-city-17759-1688702c4c5.jpg?crop=true&width=1366&height=768&xhint=739&yhint=908')] bg-cover">
+      <div className="grid place-items-center h-screen bg-center bg-fixed bg-red-800/25 bg-cover backdrop-blur-sm">
       <Image className=''
         src='/images/Pinned-Logo.png'           
         alt={`Pinned Logo`} 
@@ -106,14 +107,14 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
         height={100}
         priority />
 
-      <div className="flex justify-center align-center h-screen bg-slate-300">
+      <div className="pt-5 flex justify-center align-center h-[1000px] bg-clear-300">
 
-        <div className=" bg-white flex justify-center h-[750px] w-[600px]">
+        <div className=" bg-white flex justify-center h-[700px] w-[400px] shadow-lg p-1 rounded-lg border-t-4 border-red-400 bg-white">
           <div className="flex-col justify-center">
-            <h1 className="font-bold text-center text-4xl p-9 font-inter text-blue-500 text decoration underline">ADD NEW PIN</h1>
+            <h1 className="font-bold text-center text-4xl p-5 font-inter text-red-500 text decoration underline">ADD NEW PIN</h1>
             <form className=''onSubmit={handleSubmit}>
                 <strong className="mr-14">Name:*</strong>
-                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                <input className="p-1 border border-gray-300 rounded-md text-base focus:outline-none focus:border-red-500"
                   id="place"
                   type="text"
                   value={name}
@@ -123,7 +124,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                 <br /><br />
                 <strong className="mr-16">Type:*</strong>
                 <select
-                  className="pt-2 pb-2 pl-2 pr-[4.75rem] border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                  className="pt-2 pb-2 pl-2 pr-[4.75rem] border border-gray-300 rounded-md text-base focus:outline-none focus:border-red-500"
                   id="type"
                   value={type}
                   onChange={handleTypeChange}
@@ -158,7 +159,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                 </select>
                 <br /><br />
                 <strong className="mr-10">Address:</strong> 
-                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-red-500"
                   id="address"
                   type="text"
                   value={address}
@@ -168,7 +169,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                 <div className="flex mb-6">
                   <strong className="mr-3">Description:*</strong>
                   <textarea
-                    className="p-3 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                    className="p-3 border border-gray-300 rounded-md text-base focus:outline-none focus:border-red-500"
                     id="description"
                     value={description}
                     onChange={handleDescriptionChange}
@@ -176,7 +177,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                   />
                 </div>
                 <strong className="mr-2">Coordinates:*</strong> 
-                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-red-500"
                   id="lat/lon"
                   type="text"
                   value={latLonInput}
@@ -186,7 +187,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                 />
                 <br /><br />
                 <strong className='mr-5'>ImageURL:*</strong> 
-                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-red-500"
                   id="imageUrl"
                   type="text"
                   value={imageUrl}
@@ -195,7 +196,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
                 />
                 <br /><br />
                 <strong className="mr-4">GoogleURL:</strong> 
-                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-blue-500"
+                <input className="p-2 border border-gray-300 rounded-md text-base focus:outline-none focus:border-red-500"
                   id="googleUrl"
                   type="text"
                   value={googleUrl}
@@ -209,6 +210,7 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

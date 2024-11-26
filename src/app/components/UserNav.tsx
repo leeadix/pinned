@@ -48,13 +48,13 @@ export default function UserNav({
     <div className="h-full">
       <div className="flex justify-between">
         <button
-          className="px-2 py-1 bg-white rounded font-inter font-bold text-blue-500"
+          className="px-2 py-1 bg-white rounded font-inter font-bold text-red-500"
           onClick={() => router.push("/login")}
         >
           Hello <span>{session?.user?.name}</span>
         </button>
         <button
-          className="px-2 py-1 bg-white rounded font-inter font-bold text-blue-500"
+          className="px-2 py-1 bg-white rounded font-inter font-bold text-red-500"
           onClick={handleSignOut}
         >
           Sign out
@@ -74,7 +74,7 @@ export default function UserNav({
         <br />
         <br />
         <button
-          className="px-2 py-1 bg-white rounded font-inter font-bold text-blue-500"
+          className="px-2 py-1 bg-white rounded font-inter font-bold text-red-500"
           onClick={() => router.push("/add-pin")}
         >
           Add Pin

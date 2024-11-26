@@ -43,12 +43,12 @@ export default function Home() {
   const [openPin, setOpenPin] = useState<Pin>(pinsData[0]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-center bg-fixed bg-[url('https://content.r9cdn.net/rimg/dimg/3e/2c/96e426b6-city-17759-1688702c4c5.jpg?crop=true&width=1366&height=768&xhint=739&yhint=908')] bg-cover">
       <div className="flex min-h-screen">
-        <div className="w-[300px] bg-blue-200 p-4">
+        <div className="w-[300px] bg-red-200 p-4">
           <Nav sorts={sorts} setSort={setSort} selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} selectedLoc={selectedLoc} setSelectedLoc={setSelectedLoc} />
         </div>
-        <div className="flex-1 bg-gray-400 p-4">
+        <div className="flex-1 bg-red-400/25 p-4 backdrop-blur-sm">
         <Pins pins={pins} sorts={sorts} selectedTypes={selectedTypes} selectedLoc={selectedLoc} setOpenPin={setOpenPin} setIsOverlayOpen={setIsOverlayOpen} />
         </div>
       </div>

@@ -51,12 +51,12 @@ export function PinOverlay({
   return (
     <div>
       <div
-        className="bg-slate-400 bg-opacity-75 w-full h-full fixed top-0 right-0 cursor-pointer z-10"
+        className="bg-slate-950 bg-opacity-75 w-full h-full fixed top-0 right-0 cursor-pointer z-10"
         aria-hidden="true"
         onClick={onClose}
       />
-      <div className="bg-gray-500 fixed top-0 inset-0 m-auto z-10 w-[90%] sm:w-[900px] h-[80%] rounded-lg">
-        <div className="relative h-[400px]">
+      <div className="bg-slate-50 fixed top-0 inset-0 m-auto z-10 w-[90%] sm:w-[900px] h-[80%] rounded-lg shadow-xl">
+        <div className="relative h-[400px] shadow-xl">
           <button
             aria-label="Close overlay"
             className="relative px-2 h-8 z-20 rounded-full font-bold text-center border-none bg-white bg-transparent text-[22px] cursor-pointer"
@@ -79,25 +79,25 @@ export function PinOverlay({
             </h1>
           </div>
         </div>
-        <div className="flex justify-between m-auto bg-gray-500">
-          <div className="w-[50%] border-solid border-black border-r-2 border-b-2 text-center font-bold text-[20px] text-white">
+        <div className="flex justify-between m-auto bg-slate-50">
+          <div className="bg-white-500 w-[50%] border-solid border-black border-r-2 border-b-2 text-center font-bold text-[20px] text-black">
             {pin.type}
           </div>
-          <div className="w-[50%] border-solid border-black border-b-2 text-center font-bold text-[20px] text-white">
+          <div className="w-[50%] border-solid border-black border-b-2 text-center font-bold text-[20px] text-black">
             {pin.area}
           </div>
         </div>
-        <div className="flex justify-between m-auto bg-gray-500">
-          <div className="w-[50%] border-solid border-black border-r-2 border-b-2 text-center font-bold text-[20px] text-white">
+        <div className="flex justify-between m-auto bg-slate-50">
+          <div className="w-[50%] border-solid border-black border-r-2 border-b-2 text-center font-bold text-[20px] text-black">
             <a href={pin.googleUrl} target="_blank" rel="noopener noreferrer">
               Directions
             </a>
           </div>
-          <div className="w-[50%] border-solid border-black border-b-2 text-center font-bold text-[20px] text-white">
+          <div className="w-[50%] border-solid border-black border-b-2 text-center font-bold text-[20px] text-black">
             <h1>{pin.address}</h1>
           </div>
         </div>
-        <div className="flex p-5 m-auto bg-gray-500 text-white font-bold">
+        <div className="flex p-5 m-auto bg-slate-50 text-black font-bold">
           <h1>{pin.description}</h1>
         </div>
       </div>

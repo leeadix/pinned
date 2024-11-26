@@ -16,7 +16,7 @@ export default function FilterBox ({title, categories, selectedCategories, setSe
 
     return(
     <div className='bg-white rounded-md m-5'>
-        <div className='text-center text-3xl font-inter font-bold text-blue-500'>{title}</div>
+        <div className='text-center text-3xl font-inter font-bold text-red-500'>{title}</div>
         <ul className='w-full'>
             <li className='flex flex-col items-center'>
                 <div className='py-1 align-middle'>
@@ -26,7 +26,7 @@ export default function FilterBox ({title, categories, selectedCategories, setSe
                             <input 
                                 id="filter" 
                                 type="checkbox" 
-                                className="appearance-none w-5 h-5 rounded-full border border-gray-300 bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none align-middle" 
+                                className="appearance-none w-5 h-5 rounded-full border border-gray-300 bg-white checked:bg-red-500 checked:border-red-500 focus:outline-none align-middle" 
                                 checked={selectedCategories.includes(category)} 
                                 onChange={() => handleCheckboxChange(category)} 
                                 value="1" />
