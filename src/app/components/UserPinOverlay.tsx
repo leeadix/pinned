@@ -21,17 +21,23 @@ export function UserPinOverlay({isOpen, onClose, pin}:{isOpen: boolean, onClose:
 
     if(isOpen==true){window.history.replaceState(null, "", "/user-home/" + pin._id)}
     
-
+    const router = useRouter();
+    
     return(
         <div>
             {isOpen ? (
                 <div>
-                    <div className="bg-slate-950 bg-opacity-75 w-[100vw] h-[100vw] fixed top-0 right-0 cursor-pointer z-10" onClick={onClose} />
+                    <div className="bg-slate-950 bg-opacity-75 w-[100vw] h-[100vw] fixed top-0 right-0 cursor-pointer z-10" 
+                        onClick={onClose} />
                     <div className="bg-slate-50 fixed top-0 inset-0 m-auto z-10 w-[900px] h-[80%] rounded-lg shadow-xl">
                         <div className="relative h-[400px] shadow-xl">  
                             <div className="flex justify-between">
-                                <button className="relative px-2 h-8 z-20 rounded-full font-bold text-center border-none bg-white bg-transparent text-[22px] cursor-pointer" type="button" onClick={onClose}>X</button>
-                                <button className="relative px-2 h-8 z-20 rounded-full font-bold text-center border-none bg-white bg-transparent text-[22px] cursor-pointer" type="button" onClick={onClose}>Edit</button>
+                                <button className="relative px-2 h-8 z-20 rounded-full font-bold text-center border-none bg-white bg-transparent text-[22px] cursor-pointer" 
+                                    type="button" 
+                                    onClick={onClose}>X</button>
+                                <button className="relative px-2 h-8 z-20 rounded-full font-bold text-center border-none bg-white bg-transparent text-[22px] cursor-pointer" 
+                                    type="button" 
+                                    onClick={() => router.push("/user-home/edit-pin/" + pin._id)}>Edit</button>
                             </div>
                             <Image className="absolute z-10 top-0 left-0 w-[100%] h-[400px] rounded-t-lg object-cover"
                                 src={pin.imageUrl} 
