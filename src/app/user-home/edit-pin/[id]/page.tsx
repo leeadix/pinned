@@ -107,19 +107,20 @@ const EditPin = () => {
   
     };
 
-    const handleDelete = async () => {
+    const handleDelete = async (event: React.FormEvent<HTMLFormElement>) => {
 
-        try{
-            const response = await fetch(`/api/pins/${id}`, {
-                method: 'DELETE',
-            });
-            if(!response.ok){
-                throw new Error('Network response was not ok');
-            }
-            // router.push('/user-home');
-        } catch(err){
-            console.log('Error in handleDelete');
-        }
+      event.preventDefault();
+
+      try{
+          const response = await fetch(`/api/pins/${id}`, {
+              method: 'DELETE',
+          });
+          if(!response.ok){
+              throw new Error('Network response was not ok');
+          }
+      } catch(err){
+          console.log('Error in handleDelete');
+      }
     }
 
   return (

@@ -43,6 +43,7 @@ export default function Home({params}:{params: {id: string}}) {
 
   const [isPinOverlayOpen, setIsOverlayOpen] = useState(true);
 
+//   location.hash()??
 //   let params = useParams();
 //   let id = params.id
 //   let linkPin = pinsData.filter((pin)=> pin.id === id);
