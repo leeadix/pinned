@@ -32,7 +32,7 @@ export default function Home() {
   useEffect(()=>{
     const fetchPins = async ()=>{
       try{
-        const response = await fetch('api/pins');
+        const response = await fetch('/api/pins');
         if(!response.ok){
           throw new Error('Network response was not ok');
         }
@@ -43,14 +43,8 @@ export default function Home() {
       }
     };
     fetchPins();
+    if(isPinOverlayOpen===false){history.pushState(null, "", "/user-home/")}
   }, []);
-
-
-  const newPin = (newPin: Pin) => {
-
-    setPins((pins) => [newPin, ...pins]);
-
-  };
 
   const[sorts, setSort] = useState("Name");
 
@@ -60,13 +54,6 @@ export default function Home() {
   const [isPinOverlayOpen, setIsOverlayOpen] = useState(false);
 
   const [openPin, setOpenPin] = useState<Pin>();
-  //pinsData[0]
-
-  // const openPinOverlay = (pin: Pin) =>{
-  //   setOpenPin(pin);
-  //   setIsOverlayOpen(true);
-
-  // }
 
   return (
     <div className="min-h-screen bg-center bg-fixed bg-[url('https://content.r9cdn.net/rimg/dimg/3e/2c/96e426b6-city-17759-1688702c4c5.jpg?crop=true&width=1366&height=768&xhint=739&yhint=908')] bg-cover">
@@ -81,7 +68,7 @@ export default function Home() {
       <UserPinOverlay
         isOpen = {isPinOverlayOpen}
         onClose={async () => {
-          window.history.replaceState(null, "", "/user-home/");
+          history.replaceState(null, "", "/user-home/");
           setIsOverlayOpen(false);
         }}
         pin = {openPin}

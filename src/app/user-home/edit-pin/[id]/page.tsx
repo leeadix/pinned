@@ -123,6 +123,10 @@ const EditPin = () => {
       }
     }
 
+    const loaderProp =({src}:{src:any}) => {
+      return src;
+  }
+
   return (
     <div className="h-screen bg-center bg-fixed bg-[url('https://content.r9cdn.net/rimg/dimg/3e/2c/96e426b6-city-17759-1688702c4c5.jpg?crop=true&width=1366&height=768&xhint=739&yhint=908')] bg-cover">
       <div className="grid place-items-center h-screen bg-center bg-fixed bg-red-800/25 bg-cover backdrop-blur-sm">
@@ -131,11 +135,12 @@ const EditPin = () => {
         alt={`Pinned Logo`} 
         width={200} 
         height={100}
+        loader={loaderProp}
         priority />
 
       <div className="pt-5 flex justify-center align-center h-[1000px] bg-clear-300">
 
-        <div className=" bg-white flex justify-center h-[550px] w-[800px] shadow-lg p-1 rounded-lg border-t-4 border-red-400 bg-white">
+        <div className=" bg-white flex justify-center h-[550px] w-[800px] shadow-lg p-1 rounded-lg border-t-4 border-red-400">
           <div className="flex-col justify-center">
             <form onSubmit={handleDelete}><Button type="submit" onClick={() => router.push('/user-home')}>DELETE PIN</Button></form>
 

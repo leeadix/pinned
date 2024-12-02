@@ -106,16 +106,6 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
 
     }
 
-    // console.log(name);
-    // console.log(type);
-    // console.log(area);
-    // console.log(address);
-    // console.log(description);
-    // console.log(lat);
-    // console.log(lon);
-    // console.log(googleUrl);
-    // console.log(imageUrl);
-
     setName('');
     setType('');
     setArea('');
@@ -141,10 +131,10 @@ const AddPin: React.FC<addPinProp> = ({setPins}) => {
 
       <div className="pt-5 flex justify-center align-center h-[1000px] bg-clear-300">
 
-        <div className=" bg-white flex justify-center h-[500px] w-[800px] shadow-lg p-1 rounded-lg border-t-4 border-red-400 bg-white">
+        <div className=" bg-white flex justify-center h-[500px] w-[800px] shadow-lg p-1 rounded-lg border-t-4 border-red-400">
           <div className="flex-col justify-center">
             <h1 className="font-bold text-center text-4xl p-5 font-inter text-red-500 text decoration underline">ADD NEW PIN</h1>
-            <form className=''onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <div className="flex">
                 <div className="pr-[40px]">
                 <strong className="mr-14">Name:*</strong>

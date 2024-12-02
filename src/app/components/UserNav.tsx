@@ -42,6 +42,10 @@ export default function UserNav({
     }
   };
 
+  const loaderProp =({src}:{src:any}) => {
+    return src;
+}
+
   const { data: session } = useSession();
 
   return (
@@ -69,6 +73,7 @@ export default function UserNav({
           alt={`Pinned Logo`}
           width={200}
           height={100}
+          loader={loaderProp}
           priority
         />
         <br />

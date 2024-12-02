@@ -10,15 +10,17 @@ interface RouteParams {
 }
 
 
-export async function GET(request:NextRequest, { params }:RouteParams) {
-   const { id } = params;
+export async function GET(request:NextRequest, context: RouteParams) {
+   const { params } = await context;
+   const {id} = params;
    await connectMongoDB();
    const pin = await Pin.findOne({ _id: id });
    return NextResponse.json({ pin }, { status: 200 });
 }
 
 
-export async function PUT(request:NextRequest, { params }:RouteParams) {
+export async function PUT(request:NextRequest, context: RouteParams) {
+   const { params } = await context;
    const { id } = params;
    const { name: name, description: description, googleUrl: googleUrl, type: type, area: area, address: address, imageUrl: imageUrl, lat: lat, lon: lon } = await request.json();
    await connectMongoDB();
@@ -27,7 +29,8 @@ export async function PUT(request:NextRequest, { params }:RouteParams) {
 }
 
 
-export async function DELETE(request:NextRequest, { params }: RouteParams) {
+export async function DELETE(request:NextRequest, context: RouteParams) {
+   const { params } = await context;
    const { id } = params;
    if (!mongoose.Types.ObjectId.isValid(id)) {
        return NextResponse.json({ message: "Invalid ID format" }, { status: 400 });
