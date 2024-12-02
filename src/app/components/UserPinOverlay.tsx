@@ -19,7 +19,7 @@ import Pin from './Pin';
 //:{isOpen: boolean, onClose: any, children: any[]}
 export function UserPinOverlay({isOpen, onClose, pin}:{isOpen: boolean, onClose: any, pin: any}){
 
-    if(isOpen==true){window.history.replaceState(null, "", "/user-home/" + pin._id)}
+    if(isOpen==true){history.replaceState(null, "", "/user-home/" + pin._id)}
     
     const router = useRouter();
     
@@ -40,7 +40,7 @@ export function UserPinOverlay({isOpen, onClose, pin}:{isOpen: boolean, onClose:
                                     onClick={() => router.push("/user-home/edit-pin/" + pin._id)}>Edit</button>
                             </div>
                             <Image className="absolute z-10 top-0 left-0 w-[100%] h-[400px] rounded-t-lg object-cover"
-                                src={pin.imageUrl} 
+                                src={`${pin.imageUrl}`}
                                 alt={`picture of ${pin.name}`} 
                                 width={300} 
                                 height={300}

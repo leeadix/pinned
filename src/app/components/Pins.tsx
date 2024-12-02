@@ -19,9 +19,9 @@ let userLat = 33.938330359797355; //ramsey
 let userLon = -83.37087607162724;
 // 33.95776534918996,-83.37535277631285 arches
 
-function getUserCoordinates(){
+async function getUserCoordinates(){
   if(navigator){
-  navigator.geolocation.getCurrentPosition((position)=>{
+    await navigator.geolocation.getCurrentPosition((position)=>{
       userLat = position.coords.latitude;
       userLon = position.coords.longitude;
     //   console.log(`Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`);
@@ -49,7 +49,7 @@ type SetOpenPin = {
 
 type ExtendedPinsProps = PinsProps & SortsFiltersProps & SetOpenPin;
 
-const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selectedLoc, setOpenPin, setIsOverlayOpen}) => {
+const Pins: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selectedLoc, setOpenPin, setIsOverlayOpen}) => {
 
     if(sorts == "Name"){
         return(
@@ -82,6 +82,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
 
     }else if(sorts == "Distance"){
         
+        
         getUserCoordinates();
         
         pins.map((pin)=> {
@@ -109,7 +110,7 @@ const Users: React.FC<ExtendedPinsProps> = ({pins, sorts, selectedTypes, selecte
     }
 }
 
-export default Users;
+export default Pins;
 
 
 /* {pins.map(pin =>(<Pin key={pin.id} pin={pin} />))} */
