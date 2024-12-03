@@ -144,7 +144,7 @@ const EditPin = () => {
           <div className="flex-col justify-center">
             <form onSubmit={handleDelete}><Button type="submit" onClick={() => router.push('/user-home')}>DELETE PIN</Button></form>
 
-            <h1 className="font-bold text-center text-4xl p-5 font-inter text-red-500 text decoration underline">ADD NEW PIN</h1>
+            <h1 className="font-bold text-center text-4xl p-5 font-inter text-red-500 text decoration underline">EDIT PIN</h1>
             <form className='' onSubmit={handleSubmit}>
               <div className="flex">
                 <div className="pr-[40px]">
